@@ -1,0 +1,23 @@
+<h2>Login</h2>
+
+<div class="login-ui self-center-horizontally">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="email" type="email" formControlName="email" required autocomplete="email"/>
+      </label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="password" type="password" formControlName="password" required autocomplete="current-password"/>
+      </label>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit">Login</button>
+  </form>
+
+  <br>
+  <p>Do not have an account?</p>
+  <a mat-raised-button routerLink="../register">Register</a>
+</div>
