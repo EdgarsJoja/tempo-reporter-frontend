@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginUiComponent } from "./auth/login-ui/login-ui.component";
 import { PageNotFoundComponent } from "./general/page-not-found/page-not-found.component";
+import { RegisterUiComponent } from "./auth/register-ui/register-ui.component";
 
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
     path: 'auth',
     children: [
       { path: 'login', component: LoginUiComponent },
+      { path: 'register', component: RegisterUiComponent },
     ]
   },
   { path: '',   redirectTo: 'auth/login', pathMatch: 'full' },

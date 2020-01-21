@@ -13,12 +13,14 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatDividerModule } from "@angular/material/divider";
+import { RegisterUiComponent } from './auth/register-ui/register-ui.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginUiComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RegisterUiComponent
   ],
   imports: [
     BrowserModule,

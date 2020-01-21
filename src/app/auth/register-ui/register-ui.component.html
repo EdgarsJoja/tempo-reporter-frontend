@@ -1,0 +1,37 @@
+<h2>Register</h2>
+
+<div class="form-container-normal self-center-horizontally">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="First name" type="text" formControlName="first_name" autocomplete="name"/>
+      </label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="Last name" type="text" formControlName="last_name"
+               autocomplete="last_name surname"/>
+      </label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="Email" type="email" formControlName="email" required autocomplete="email"/>
+      </label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="Password" type="password" formControlName="password" required
+               autocomplete="current-password"/>
+      </label>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit">Register</button>
+  </form>
+
+  <br>
+  <p>Already have an account?</p>
+  <button mat-raised-button routerLink="../login">Login</button>
+</div>

@@ -26,6 +26,14 @@ body {
 }
 
 // Forms
+.form {
+  &-container {
+    &-normal {
+      max-width: 20em;
+    }
+  }
+}
+
 form {
   display: flex;
   flex-direction: column;
