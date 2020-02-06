@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register-ui',
@@ -14,8 +15,9 @@ export class RegisterUiComponent implements OnInit {
    * Constructor
    *
    * @param formBuilder
+   * @param authService
    */
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.registerForm = this.formBuilder.group({
       email: '',
       password: '',
@@ -34,6 +36,6 @@ export class RegisterUiComponent implements OnInit {
    * @param registerData
    */
   onSubmit(registerData) {
-    console.log(registerData);
+    this.authService.register(registerData);
   }
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatDividerModule } from "@angular/material/divider";
 import { RegisterUiComponent } from './auth/register-ui/register-ui.component';
+import { ApiModule } from '../api/api.module';
+import { EnvService } from './services/env.service';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,20 @@ import { RegisterUiComponent } from './auth/register-ui/register-ui.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatDividerModule
+    MatDividerModule,
+    ApiModule
   ],
-  providers: [],
+  providers: [
+    EnvService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (svc: EnvService) => { return () => svc.loadAppEnv() },
+      multi: true,
+      deps: [
+        EnvService
+      ]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

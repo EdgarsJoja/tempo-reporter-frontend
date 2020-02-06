@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Env files
+/src/environments/env/*
+!/src/environments/env/sample.json

@@ -1,0 +1,9 @@
+{
+  "api": {
+    "host": "http://localhost",
+    "endpoints": {
+      "register": "/auth/register"
+    }
+  }
+}
+
