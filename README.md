@@ -1,3 +1,9 @@
+# Configuration
+Copy _src/environments/env/sample.json_ in the same folder and rename it to _env.json_. 
+Replace all the needed data with environment specific values.
+
+---
+
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
