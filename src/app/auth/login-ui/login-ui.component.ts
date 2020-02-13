@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
+import { AuthService } from '../services/auth.service';
+import { LoginData } from '../models/login';
 
 @Component({
   selector: 'app-login-ui',
@@ -14,8 +16,9 @@ export class LoginUiComponent implements OnInit {
    * Constructor
    *
    * @param formBuilder
+   * @param authService
    */
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
       email: '',
       password: '',
@@ -30,8 +33,8 @@ export class LoginUiComponent implements OnInit {
    *
    * @param loginData
    */
-  onSubmit(loginData) {
-    console.log(loginData);
+  onSubmit(loginData: LoginData) {
+    this.authService.login(loginData);
   }
 
 }

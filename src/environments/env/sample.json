@@ -2,7 +2,8 @@
   "api": {
     "host": "http://localhost",
     "endpoints": {
-      "register": "/auth/register"
+      "register": "/auth/register",
+      "login": "/auth/login"
     }
   }
 }

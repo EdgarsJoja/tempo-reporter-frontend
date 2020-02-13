@@ -8,5 +8,6 @@ export class ApiEnv {
 }
 
 export class ApiEndpointsEnv {
-  public register: string
+  public register: string;
+  public login: string;
 }

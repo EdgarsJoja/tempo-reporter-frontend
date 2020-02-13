@@ -16,13 +16,15 @@ import { MatDividerModule } from "@angular/material/divider";
 import { RegisterUiComponent } from './auth/register-ui/register-ui.component';
 import { ApiModule } from '../api/api.module';
 import { EnvService } from './services/env.service';
+import { MainComponent } from './account/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginUiComponent,
     PageNotFoundComponent,
-    RegisterUiComponent
+    RegisterUiComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

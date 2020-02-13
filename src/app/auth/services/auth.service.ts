@@ -2,13 +2,25 @@ import { Injectable } from '@angular/core';
 import { PostService } from '../../../api/services/requests/post.service';
 import { EnvService } from '../../services/env.service';
 import { RegisterData } from '../models/register';
+import { LoginData } from '../models/login';
+import { UrlBuilderService } from '../../../api/services/utils/url-builder.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private envService: EnvService, private postService: PostService) {
+  /**
+   *
+   * @param envService
+   * @param postService
+   * @param urlBuilderService
+   */
+  constructor(
+    private envService: EnvService,
+    private postService: PostService,
+    private urlBuilderService: UrlBuilderService
+  ) {
   }
 
   /**
@@ -18,7 +30,7 @@ export class AuthService {
    */
   register(data: RegisterData) {
     this.postService.setData(data);
-    this.postService.setUrl(this.getRequestUrl(this.envService.getEnv().api.endpoints.register))
+    this.postService.setUrl(this.urlBuilderService.getApiUrl('register'));
 
     this.postService.execute().then(data => {
       // @todo: Implement actual functionality
@@ -26,12 +38,13 @@ export class AuthService {
     });
   }
 
-  /**
-   * @todo: Refactor API url-builder as separate service
-   *
-   * @param endpoint
-   */
-  getRequestUrl(endpoint: string) {
-    return `${this.envService.getEnv().api.host}${endpoint}`;
+  login(data: LoginData) {
+    this.postService.setData(data);
+    this.postService.setUrl(this.urlBuilderService.getApiUrl('login'));
+
+    this.postService.execute().then(data => {
+      // @todo: Implement actual functionality
+      console.log(data);
+    });
   }
 }
