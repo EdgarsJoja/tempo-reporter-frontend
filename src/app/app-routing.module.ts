@@ -4,7 +4,7 @@ import { LoginUiComponent } from "./auth/login-ui/login-ui.component";
 import { PageNotFoundComponent } from "./general/page-not-found/page-not-found.component";
 import { RegisterUiComponent } from "./auth/register-ui/register-ui.component";
 import { MainComponent } from './account/main/main.component';
-
+import { AuthGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,6 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'account',
+    canActivateChild: [AuthGuard],
     children: [
       { path: 'main', component: MainComponent }
     ]

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
 import { AuthService } from '../services/auth.service';
 import { LoginData } from '../models/login';
+import { ResponseData } from '../models/response';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-ui',
@@ -17,8 +19,9 @@ export class LoginUiComponent implements OnInit {
    *
    * @param formBuilder
    * @param authService
+   * @param router
    */
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: '',
       password: '',
@@ -34,7 +37,13 @@ export class LoginUiComponent implements OnInit {
    * @param loginData
    */
   onSubmit(loginData: LoginData) {
-    this.authService.login(loginData);
+    this.authService.login(loginData).then(data => {
+      const response = data as ResponseData;
+
+      if (!response.error) {
+        this.router.navigate(['/account/main']).then(data => {});
+      }
+    });
   }
 
 }

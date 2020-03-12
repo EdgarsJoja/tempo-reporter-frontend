@@ -32,19 +32,25 @@ export class AuthService {
     this.postService.setData(data);
     this.postService.setUrl(this.urlBuilderService.getApiUrl('register'));
 
-    this.postService.execute().then(data => {
-      // @todo: Implement actual functionality
-      console.log(data);
-    });
+    return this.postService.execute();
   }
 
+  /**
+   * Login action
+   *
+   * @param data
+   */
   login(data: LoginData) {
     this.postService.setData(data);
     this.postService.setUrl(this.urlBuilderService.getApiUrl('login'));
 
-    this.postService.execute().then(data => {
-      // @todo: Implement actual functionality
-      console.log(data);
-    });
+    return this.postService.execute();
+  }
+
+  /**
+   * @todo: Implement functionality
+   */
+  isLoggedIn() {
+    return true;
   }
 }
