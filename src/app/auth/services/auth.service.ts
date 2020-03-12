@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { PostService } from '../../../api/services/requests/post.service';
+import { PostService } from '../../api/services/requests/post.service';
 import { EnvService } from '../../services/env.service';
 import { RegisterData } from '../models/register';
 import { LoginData } from '../models/login';
-import { UrlBuilderService } from '../../../api/services/utils/url-builder.service';
+import { UrlBuilderService } from '../../api/services/utils/url-builder.service';
 
 @Injectable({
   providedIn: 'root'

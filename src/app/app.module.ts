@@ -14,9 +14,11 @@ import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatDividerModule } from "@angular/material/divider";
 import { RegisterUiComponent } from './auth/register-ui/register-ui.component';
-import { ApiModule } from '../api/api.module';
+import { ApiModule } from './api/api.module';
 import { EnvService } from './services/env.service';
 import { MainComponent } from './account/main/main.component';
+import { httpInterceptorProviders } from './http-interceptors';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { MainComponent } from './account/main/main.component';
     MatInputModule,
     ReactiveFormsModule,
     MatDividerModule,
-    ApiModule
+    ApiModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     EnvService,
@@ -48,7 +51,8 @@ import { MainComponent } from './account/main/main.component';
       deps: [
         EnvService
       ]
-    }
+    },
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
