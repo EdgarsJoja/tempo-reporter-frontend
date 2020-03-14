@@ -19,6 +19,7 @@ import { EnvService } from './services/env.service';
 import { MainComponent } from './account/main/main.component';
 import { httpInterceptorProviders } from './http-interceptors';
 import { ToastrModule } from 'ngx-toastr';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ToastrModule } from 'ngx-toastr';
         EnvService
       ]
     },
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

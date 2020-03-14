@@ -1,10 +1,10 @@
 export class ResponseData {
   public error: boolean;
   public messages: Message[];
-  public data: [];
+  public data: {};
 }
 
-class Message {
+export class Message {
   public type: string;
   public message: string;
 }

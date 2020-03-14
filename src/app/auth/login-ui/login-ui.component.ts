@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
 import { AuthService } from '../services/auth.service';
 import { LoginData } from '../models/login';
-import { ResponseData } from '../models/response';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginResponseData } from '../models/loginResponseData';
+import { DateTimeService } from '../../services/datetime.service';
 
 @Component({
   selector: 'app-login-ui',
@@ -20,15 +22,24 @@ export class LoginUiComponent implements OnInit {
    * @param formBuilder
    * @param authService
    * @param router
+   * @param cookieService
+   * @param dateTimeService
    */
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private cookieService: CookieService,
+    private dateTimeService: DateTimeService
+  ) {
     this.loginForm = this.formBuilder.group({
       email: '',
       password: '',
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   /**
    * Submit login form
@@ -38,10 +49,30 @@ export class LoginUiComponent implements OnInit {
    */
   onSubmit(loginData: LoginData) {
     this.authService.login(loginData).then(data => {
-      const response = data as ResponseData;
+      const response = data as LoginResponseData;
 
-      if (!response.error) {
-        this.router.navigate(['/account/main']).then(data => {});
+      if (!response.error && response.data.api_token) {
+        const promise = new Promise((resolve, reject) => {
+          // @todo: Add wrapper service for this
+          this.cookieService.set(
+            'tr_api_token',
+            response.data.api_token,
+            this.dateTimeService.hourFromNow(),
+            '/'
+          );
+
+          if (this.cookieService.check('tr_api_token')) {
+            resolve();
+          } else {
+            reject();
+          }
+        });
+
+        promise.then(() => {
+          this.router.navigate(['/account/main']).then(data => {});
+        }, () => {
+          console.log('rejected!');
+        })
       }
     });
   }
