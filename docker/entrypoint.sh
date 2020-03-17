@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cp -r /build-dir/node_modules/ /app-dir/
+cp -r /app/build-dir/node_modules/ /app/app-dir/
 
 exec npm run start-docker

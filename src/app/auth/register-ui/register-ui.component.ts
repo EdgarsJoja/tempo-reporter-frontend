@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterUiComponent implements OnInit {
 
-  private registerForm;
+  public registerForm;
 
   /**
    * Constructor

@@ -14,7 +14,7 @@ import { DateTimeService } from '../../services/datetime.service';
 })
 export class LoginUiComponent implements OnInit {
 
-  private loginForm;
+  public loginForm;
 
   /**
    * Constructor

@@ -7,18 +7,23 @@ ENV PATH=$PATH:/home/node/.npm-global/bin
 
 USER root
 
-RUN mkdir -p /build-dir
-WORKDIR /build-dir
+RUN mkdir -p app/build-dir
+RUN mkdir -p app/app-dir
+
+RUN chown -R node:node app
+
+USER node
+
+WORKDIR /app/build-dir
 
 COPY package*.json ./
 
 RUN npm install
 RUN npm install -g @angular/cli
 
-RUN mkdir -p /app-dir
-WORKDIR /app-dir
+WORKDIR /app/app-dir
 
-RUN ln -sfn /build-dir/node_modules node_modules
+RUN ln -sfn /app/build-dir/node_modules node_modules
 
 COPY . ./
 
