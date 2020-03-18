@@ -25,7 +25,7 @@ export class PreventAuthenticatedAccessGuard implements CanActivateChild {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/account/main']).then(data => {});
+      this.router.navigate(['/account/dashboard']).then(data => {});
     }
 
     return !this.authService.isLoggedIn();

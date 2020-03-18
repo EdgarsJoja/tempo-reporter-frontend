@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Tempo Reporter';
+  public title = 'Tempo Reporter';
+
+  public navLinks = [
+    { path: '/account/dashboard', label: 'Dashboard' },
+    { path: '/account/teams', label: 'Teams' },
+    { path: '/account/settings', label: 'Settings' },
+  ];
+
+  constructor(public authService: AuthService) {
+  }
 }

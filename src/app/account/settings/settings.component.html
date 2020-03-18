@@ -1,0 +1,6 @@
+<mat-tab-group>
+  <mat-tab *ngFor="let tab of tabs" [label]="tab.label">
+    <ng-container *ngComponentOutlet="tab.content"></ng-container>
+  </mat-tab>
+</mat-tab-group>
+

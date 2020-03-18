@@ -1,0 +1,24 @@
+<h2>Account data</h2>
+
+<div class="form-container-normal self-center-horizontally">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="First name" type="text" formControlName="first_name" autocomplete="name"/>
+      </label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="Last name" type="text" formControlName="last_name"
+               autocomplete="last_name surname"/>
+      </label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="Email" type="email" formControlName="email" required autocomplete="email"/>
+      </label>
+    </mat-form-field>
+  </form>
+</div>

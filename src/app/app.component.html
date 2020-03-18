@@ -1,11 +1,27 @@
-<mat-toolbar color="primary">
-  <h1>Tempo Reporter</h1>
-  <span class="space-filler"></span>
-  <button mat-icon-button>
-    <mat-icon>account_circle</mat-icon>
-  </button>
-</mat-toolbar>
+<mat-sidenav-container class="app-container" [hasBackdrop]="true" fullscreen>
+  <mat-sidenav #sidenav mode="side" [opened]="false" (show)="authService.isLoggedIn()">
+    <mat-nav-list>
+      <a *ngFor="let navLink of navLinks" [routerLink]="navLink.path" (click)="sidenav.toggle()">
+        <mat-list-item>{{ navLink.label }}</mat-list-item>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<div class="app-content content">
-  <router-outlet></router-outlet>
-</div>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button *ngIf="authService.isLoggedIn()" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1>{{ title }}</h1>
+      <span class="space-filler"></span>
+
+      <button mat-icon-button *ngIf="authService.isLoggedIn()">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="app-content content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

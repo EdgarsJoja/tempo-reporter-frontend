@@ -69,7 +69,7 @@ export class LoginUiComponent implements OnInit {
         });
 
         promise.then(() => {
-          this.router.navigate(['/account/main']).then(data => {});
+          this.router.navigate(['/account/dashboard']).then(data => {});
         }, () => {
           console.log('rejected!');
         })

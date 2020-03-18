@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginUiComponent } from "./auth/login-ui/login-ui.component";
 import { PageNotFoundComponent } from "./general/page-not-found/page-not-found.component";
 import { RegisterUiComponent } from "./auth/register-ui/register-ui.component";
-import { MainComponent } from './account/main/main.component';
 import { PreventGuestAccessGuard } from './auth/guards/prevent-guest-access.guard';
 import { PreventAuthenticatedAccessGuard } from './auth/guards/prevent-authenticated-access.guard';
+import { DashboardComponent } from './account/dashboard/dashboard.component';
+import { SettingsComponent } from './account/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     path: 'account',
     canActivateChild: [PreventGuestAccessGuard],
     children: [
-      { path: 'main', component: MainComponent }
+      { path: 'dashboard', component: DashboardComponent  },
+      { path: 'settings', component: SettingsComponent  },
     ]
   },
   { path: '',   redirectTo: 'auth/login', pathMatch: 'full' },

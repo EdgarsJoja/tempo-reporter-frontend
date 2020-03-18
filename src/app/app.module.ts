@@ -16,10 +16,15 @@ import { MatDividerModule } from "@angular/material/divider";
 import { RegisterUiComponent } from './auth/register-ui/register-ui.component';
 import { ApiModule } from './api/api.module';
 import { EnvService } from './services/env.service';
-import { MainComponent } from './account/main/main.component';
 import { httpInterceptorProviders } from './http-interceptors';
 import { ToastrModule } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { DashboardComponent } from './account/dashboard/dashboard.component';
+import { MatListModule } from '@angular/material/list';
+import { SettingsComponent } from './account/settings/settings.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AccountComponent } from './account/settings/account/account.component';
 
 @NgModule({
   declarations: [
@@ -27,22 +32,27 @@ import { CookieService } from 'ngx-cookie-service';
     LoginUiComponent,
     PageNotFoundComponent,
     RegisterUiComponent,
-    MainComponent
+    DashboardComponent,
+    SettingsComponent,
+    AccountComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDividerModule,
-    ApiModule,
-    ToastrModule.forRoot()
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatDividerModule,
+        ApiModule,
+        ToastrModule.forRoot(),
+        MatSidenavModule,
+        MatListModule,
+        MatTabsModule
+    ],
   providers: [
     EnvService,
     {
