@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -19,10 +19,10 @@ export class RegisterUiComponent implements OnInit {
    */
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.registerForm = this.formBuilder.group({
-      email: '',
-      password: '',
-      first_name: '',
-      last_name: '',
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]], // @todo: Add BE validation
+      first_name: [''],
+      last_name: [''],
     });
   }
 

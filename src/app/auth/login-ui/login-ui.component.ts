@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from '../services/auth.service';
 import { LoginData } from '../models/login';
 import { Router } from '@angular/router';
@@ -33,8 +33,8 @@ export class LoginUiComponent implements OnInit {
     private dateTimeService: DateTimeService
   ) {
     this.loginForm = this.formBuilder.group({
-      email: '',
-      password: '',
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
     });
   }
 

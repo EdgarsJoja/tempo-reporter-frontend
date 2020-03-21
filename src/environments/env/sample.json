@@ -4,7 +4,8 @@
     "endpoints": {
       "register": "/auth/register",
       "login": "/auth/login",
-      "user_data": "/api/v1/user/{token}"
+      "user_data": "/api/v1/user/{token}",
+      "user_data_update": "/api/v1/user/{token}"
     }
   }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PostService } from './services/requests/post.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GetService } from './services/requests/get.service';
+import { PatchService } from './services/requests/patch.service';
 
 @NgModule({
   declarations: [],
@@ -12,7 +13,8 @@ import { GetService } from './services/requests/get.service';
   ],
   providers: [
     PostService,
-    GetService
+    GetService,
+    PatchService
   ]
 })
 export class ApiModule { }

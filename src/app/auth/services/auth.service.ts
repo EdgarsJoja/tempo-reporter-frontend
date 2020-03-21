@@ -28,6 +28,7 @@ export class AuthService {
 
   /**
    * Register action
+   * @todo: Migrate to API module services
    *
    * @param data
    */
@@ -40,6 +41,7 @@ export class AuthService {
 
   /**
    * Login action
+   * @todo: Migrate to API module services
    *
    * @param data
    */

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserDataService } from '../../../api/services/user/user-data.service';
 import { AuthService } from '../../../auth/services/auth.service';
 import { UserResponseData } from '../../../api/models/userResponseData';
@@ -26,26 +26,28 @@ export class AccountComponent implements OnInit {
     private authService: AuthService
   ) {
     this.form = this.formBuilder.group({
-      first_name: '',
-      last_name: '',
-      email: '',
+      first_name: [''],
+      last_name: [''],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
   ngOnInit(): void {
-    this.userDataService.getUserData(this.authService.getUserToken()).then(data => {
+    this.userDataService.getUserData().then(data => {
       const responseData  = data as UserResponseData;
 
-      this.form.patchValue(responseData.data.user);
+      if (!responseData.error) {
+        this.form.patchValue(responseData.data.user);
+      }
     });
   }
 
   /**
-   * @todo: Implement functionality
+   * Form submit
    *
    * @param formData
    */
   onSubmit(formData) {
-    console.log(formData);
+    this.userDataService.updateUserData(formData).then(data => {});
   }
 }
