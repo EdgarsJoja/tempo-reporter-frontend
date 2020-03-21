@@ -51,17 +51,17 @@ export class LoginUiComponent implements OnInit {
     this.authService.login(loginData).then(data => {
       const response = data as LoginResponseData;
 
-      if (!response.error && response.data.api_token) {
+      if (!response.error && response.data.user_token) {
         const promise = new Promise((resolve, reject) => {
           // @todo: Add wrapper service for this
           this.cookieService.set(
-            'tr_api_token',
-            response.data.api_token,
+            'user_token',
+            response.data.user_token,
             this.dateTimeService.hourFromNow(),
             '/'
           );
 
-          if (this.cookieService.check('tr_api_token')) {
+          if (this.cookieService.check('user_token')) {
             resolve();
           } else {
             reject();

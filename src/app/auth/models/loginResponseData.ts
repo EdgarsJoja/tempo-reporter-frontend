@@ -13,5 +13,5 @@ export class LoginResponseData implements ResponseData {
  * Login data object
  */
 class Data {
-  api_token: string;
+  user_token: string;
 }

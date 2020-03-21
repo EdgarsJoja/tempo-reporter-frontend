@@ -10,4 +10,5 @@ export class ApiEnv {
 export class ApiEndpointsEnv {
   public register: string;
   public login: string;
+  public user_data: string;
 }

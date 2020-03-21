@@ -14,12 +14,12 @@ export abstract class RequestService {
    *
    * @param data
    */
-  public abstract setData(data: object);
+  public abstract setData(data: object): this;
 
   /**
    * Set request URL
    *
    * @param url
    */
-  public abstract setUrl(url: string);
+  public abstract setUrl(url: string): this;
 }

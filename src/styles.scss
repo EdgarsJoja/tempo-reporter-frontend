@@ -45,3 +45,10 @@ form {
     width: 100%;
   }
 }
+
+// Notifications
+.toast-container {
+  .ngx-toastr {
+    box-shadow: none;
+  }
+}

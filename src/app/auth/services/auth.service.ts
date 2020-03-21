@@ -54,6 +54,13 @@ export class AuthService {
    * Check if current user in considered as logged in
    */
   isLoggedIn() {
-    return this.cookieService.check('tr_api_token')
+    return this.cookieService.check('user_token')
+  }
+
+  /**
+   * Get user token cookie value
+   */
+  getUserToken() {
+    return this.cookieService.get('user_token');
   }
 }

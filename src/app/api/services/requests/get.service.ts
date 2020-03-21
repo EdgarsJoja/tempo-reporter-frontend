@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class PostService implements RequestService {
+export class GetService implements RequestService {
 
   /**
    * Request data object
@@ -28,7 +28,7 @@ export class PostService implements RequestService {
    * Execute request
    */
   execute() {
-    return this.http.post(this.url, this.data).toPromise();
+    return this.http.get(this.url, this.data).toPromise();
   }
 
   /**

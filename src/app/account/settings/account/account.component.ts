@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { UserDataService } from '../../../api/services/user/user-data.service';
+import { AuthService } from '../../../auth/services/auth.service';
+import { UserResponseData } from '../../../api/models/userResponseData';
 
 @Component({
   selector: 'app-account',
@@ -14,8 +17,14 @@ export class AccountComponent implements OnInit {
    * Constructor
    *
    * @param formBuilder
+   * @param userDataService
+   * @param authService
    */
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private userDataService: UserDataService,
+    private authService: AuthService
+  ) {
     this.form = this.formBuilder.group({
       first_name: '',
       last_name: '',
@@ -24,6 +33,11 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userDataService.getUserData(this.authService.getUserToken()).then(data => {
+      const responseData  = data as UserResponseData;
+
+      this.form.patchValue(responseData.data.user);
+    });
   }
 
   /**

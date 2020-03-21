@@ -19,17 +19,28 @@ export class UrlBuilderService {
    * Get endpoint by name
    *
    * @param endpoint
+   * @param args
+   * @param arguments
    */
-  getEndpoint(endpoint: string) {
-    return this.envService.getEnv().api.endpoints[endpoint];
+  getEndpoint(endpoint: string, args: object = {}) {
+    let endpointPath = String(this.envService.getEnv().api.endpoints[endpoint]);
+
+    for (let key in args) {
+      if (args.hasOwnProperty(key)) {
+        endpointPath = endpointPath.replace(`{${key}}`, args[key]);
+      }
+    }
+
+    return endpointPath;
   }
 
   /**
    * Get full API url
    *
    * @param endpoint
+   * @param args
    */
-  getApiUrl(endpoint: string) {
-    return `${this.getHost()}${this.getEndpoint(endpoint)}`;
+  getApiUrl(endpoint: string, args: object = {}) {
+    return `${this.getHost()}${this.getEndpoint(endpoint, args)}`;
   }
 }
