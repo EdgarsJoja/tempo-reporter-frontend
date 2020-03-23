@@ -11,6 +11,7 @@ import { UserResponseTempoData } from '../../../api/models/userResponseTempoData
 export class TempoComponent implements OnInit {
 
   public form;
+  public hideTokenText: boolean = true;
 
   /**
    *

@@ -1,5 +1,5 @@
 <mat-sidenav-container class="app-container" [hasBackdrop]="true" fullscreen>
-  <mat-sidenav #sidenav mode="side" [opened]="false" (show)="authService.isLoggedIn()">
+  <mat-sidenav #sidenav mode="over" [opened]="false" (show)="authService.isLoggedIn()">
     <mat-nav-list>
       <a *ngFor="let navLink of navLinks" [routerLink]="navLink.path" (click)="sidenav.toggle()">
         <mat-list-item>{{ navLink.label }}</mat-list-item>

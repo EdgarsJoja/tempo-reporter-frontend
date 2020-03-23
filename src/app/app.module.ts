@@ -26,6 +26,7 @@ import { SettingsComponent } from './account/settings/settings.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AccountComponent } from './account/settings/account/account.component';
 import { TempoComponent } from './account/settings/tempo/tempo.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -38,23 +39,24 @@ import { TempoComponent } from './account/settings/tempo/tempo.component';
     AccountComponent,
     TempoComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatDividerModule,
-        ApiModule,
-        ToastrModule.forRoot(),
-        MatSidenavModule,
-        MatListModule,
-        MatTabsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDividerModule,
+    ApiModule,
+    ToastrModule.forRoot(),
+    MatSidenavModule,
+    MatListModule,
+    MatTabsModule,
+    MatTooltipModule
+  ],
   providers: [
     EnvService,
     {

@@ -1,17 +1,35 @@
-<h2>Tempo API data</h2>
+<h2 xmlns:https="http://www.w3.org/1999/xhtml">Tempo API data</h2>
 
 <div class="form-container-normal self-center-horizontally">
   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
     <mat-form-field>
       <label>
-        <input matInput placeholder="Tempo API token" type="password" formControlName="tempo_token"/>
+        <input matInput
+               matTooltip="Jira > Tempo > Tempo Settings > API Integration > Get Access Token"
+               matTooltipShowDelay="1000"
+               placeholder="Tempo API token"
+               [type]="hideTokenText ? 'password' : 'text'"
+               formControlName="tempo_token"/>
       </label>
+      <button mat-icon-button
+              matSuffix
+              (click)="hideTokenText = !hideTokenText"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hideTokenText"
+              type="button">
+        <mat-icon>{{hideTokenText ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error *ngIf="form.get('tempo_token').hasError('required')">This is a required field</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <label>
-        <input matInput placeholder="Jira account ID" type="text" formControlName="jira_account_id"/>
+        <input matInput
+               matTooltip="Jira > Go to Your Profile > Copy part from URL, that comes after &quot;https://*.atlassian.net/people/\&quot;"
+               matTooltipShowDelay="1000"
+               placeholder="Jira account ID"
+               type="text"
+               formControlName="jira_account_id"/>
       </label>
       <mat-error *ngIf="form.get('jira_account_id').hasError('required')">This is a required field</mat-error>
     </mat-form-field>
