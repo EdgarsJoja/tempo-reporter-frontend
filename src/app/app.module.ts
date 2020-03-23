@@ -25,6 +25,7 @@ import { MatListModule } from '@angular/material/list';
 import { SettingsComponent } from './account/settings/settings.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AccountComponent } from './account/settings/account/account.component';
+import { TempoComponent } from './account/settings/tempo/tempo.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AccountComponent } from './account/settings/account/account.component';
     DashboardComponent,
     SettingsComponent,
     AccountComponent,
+    TempoComponent,
   ],
     imports: [
         BrowserModule,
