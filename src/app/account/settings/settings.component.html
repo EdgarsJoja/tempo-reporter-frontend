@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group [@.disabled]="true">
   <mat-tab *ngFor="let tab of tabs" [label]="tab.label">
     <div class="tab-content">
       <ng-container *ngComponentOutlet="tab.content"></ng-container>

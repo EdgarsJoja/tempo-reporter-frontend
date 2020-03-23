@@ -56,3 +56,18 @@ form {
     box-shadow: none;
   }
 }
+
+// Tabs
+.mat-tab-body.mat-tab-body-active {
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

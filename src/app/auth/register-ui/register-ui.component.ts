@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from '../services/auth.service';
+import { RegisterResponseData } from '../models/registerResponseData';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-ui',
@@ -16,8 +18,9 @@ export class RegisterUiComponent implements OnInit {
    *
    * @param formBuilder
    * @param authService
+   * @param router
    */
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]], // @todo: Add BE validation
@@ -31,11 +34,16 @@ export class RegisterUiComponent implements OnInit {
 
   /**
    * Submit register form
-   * @todo: Implement functionality
    *
    * @param registerData
    */
   onSubmit(registerData) {
-    this.authService.register(registerData);
+    this.authService.register(registerData).then(data => {
+      const responseData = data as RegisterResponseData;
+
+      if (!responseData.error) {
+        this.router.navigate(['/auth/login']).then(data => {});
+      }
+    });
   }
 }
