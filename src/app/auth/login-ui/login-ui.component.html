@@ -2,22 +2,36 @@
 
 <div class="form-container-normal self-center-horizontally">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
       <label>
-        <input matInput placeholder="email" type="email" formControlName="email" required autocomplete="email"/>
+        <input matInput
+               placeholder="Please enter value..."
+               type="email"
+               formControlName="email"
+               required
+               autocomplete="email"/>
       </label>
       <mat-error *ngIf="loginForm.get('email').hasError('required')">This is a required field</mat-error>
       <mat-error *ngIf="loginForm.get('email').hasError('email')">Please enter valid email address</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
       <label>
-        <input matInput placeholder="password" type="password" formControlName="password" required autocomplete="current-password"/>
+        <input matInput
+               placeholder="Please enter value..."
+               type="password"
+               formControlName="password"
+               required
+               autocomplete="current-password"/>
       </label>
       <mat-error *ngIf="loginForm.get('password').hasError('required')">This is a required field</mat-error>
     </mat-form-field>
 
-    <button class="form-submit" mat-flat-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+    <button class="form-submit" mat-flat-button color="primary" type="submit" [disabled]="!loginForm.valid">
+      Login
+    </button>
   </form>
 
   <br>

@@ -2,37 +2,41 @@
 
 <div class="form-container-normal self-center-horizontally">
   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-    <mat-form-field>
-      <label>
-        <input matInput
-               matTooltip="Jira > Tempo > Tempo Settings > API Integration > Get Access Token"
-               matTooltipShowDelay="1000"
-               placeholder="Tempo API token"
-               [type]="hideTokenText ? 'password' : 'text'"
-               formControlName="tempo_token"/>
-      </label>
-      <button mat-icon-button
-              matSuffix
-              (click)="hideTokenText = !hideTokenText"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hideTokenText"
-              type="button">
-        <mat-icon>{{hideTokenText ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-      <mat-error *ngIf="form.get('tempo_token').hasError('required')">This is a required field</mat-error>
-    </mat-form-field>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Tempo API token</mat-label>
+        <label>
+          <input matInput
+                 placeholder="Please enter value..."
+                 [type]="hideTokenText ? 'password' : 'text'"
+                 formControlName="tempo_token"/>
+        </label>
+        <button mat-icon-button
+                matSuffix
+                (click)="hideTokenText = !hideTokenText"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hideTokenText"
+                type="button">
+          <mat-icon>{{hideTokenText ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-hint>Jira > Tempo > Tempo Settings > API Integration > Get Access Token</mat-hint>
+        <mat-error *ngIf="form.get('tempo_token').hasError('required')">This is a required field</mat-error>
+      </mat-form-field>
+    </p>
 
-    <mat-form-field>
-      <label>
-        <input matInput
-               matTooltip="Jira > Go to Your Profile > Copy part from URL, that comes after &quot;https://*.atlassian.net/people/\&quot;"
-               matTooltipShowDelay="1000"
-               placeholder="Jira account ID"
-               type="text"
-               formControlName="jira_account_id"/>
-      </label>
-      <mat-error *ngIf="form.get('jira_account_id').hasError('required')">This is a required field</mat-error>
-    </mat-form-field>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Jira account ID</mat-label>
+        <label>
+          <input matInput
+                 placeholder="Please enter value..."
+                 type="text"
+                 formControlName="jira_account_id"/>
+        </label>
+        <mat-hint>Jira > Go to Your Profile > Copy part from URL after "https://*.atlassian.net/people/"</mat-hint>
+        <mat-error *ngIf="form.get('jira_account_id').hasError('required')">This is a required field</mat-error>
+      </mat-form-field>
+    </p>
 
     <button class="form-submit" mat-flat-button color="primary" type="submit" [disabled]="!form.valid">Save</button>
   </form>
