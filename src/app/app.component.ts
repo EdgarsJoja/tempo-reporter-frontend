@@ -12,6 +12,7 @@ export class AppComponent {
   public navLinks = [
     { path: '/account/dashboard', label: 'Dashboard' },
     { path: '/account/teams', label: 'Teams' },
+    { path: '/account/reports', label: 'Reports' },
     { path: '/account/settings', label: 'Settings' },
   ];
 

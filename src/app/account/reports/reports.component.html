@@ -1,0 +1,25 @@
+<h2>Reports</h2>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Select date</mat-label>
+    <label>
+      <input matInput [matDatepicker]="reportDate" [formControl]="date" [max]="maxDate" (dateChange)="getReport()">
+    </label>
+    <mat-datepicker-toggle matSuffix [for]="reportDate"></mat-datepicker-toggle>
+    <mat-datepicker #reportDate disabled="false" touchUi></mat-datepicker>
+  </mat-form-field>
+</p>
+
+<mat-form-field class="report-textarea" appearance="outline">
+  <mat-label>Your report</mat-label>
+  <label>
+    <textarea
+      matInput
+      placeholder="Report..."
+      cdkTextareaAutosize="true"
+      cdkAutosizeMinRows="10"
+      [ngModel]="report | worklogsToText"></textarea>
+  </label>
+  <mat-icon matSuffix>file_copy</mat-icon>
+</mat-form-field>

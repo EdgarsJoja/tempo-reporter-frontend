@@ -11,7 +11,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { PageNotFoundComponent } from './general/page-not-found/page-not-found.component';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDividerModule } from "@angular/material/divider";
 import { RegisterUiComponent } from './auth/register-ui/register-ui.component';
 import { ApiModule } from './api/api.module';
@@ -27,6 +27,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AccountComponent } from './account/settings/account/account.component';
 import { TempoComponent } from './account/settings/tempo/tempo.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReportsComponent } from './account/reports/reports.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {
+  MAT_DATE_LOCALE,
+  MatNativeDateModule
+} from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { WorklogsToTextPipe } from './account/reports/pipes/worklogs-to-text.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +46,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     SettingsComponent,
     AccountComponent,
     TempoComponent,
+    ReportsComponent,
+    WorklogsToTextPipe,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +65,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSidenavModule,
     MatListModule,
     MatTabsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
+    FormsModule
   ],
   providers: [
     EnvService,
@@ -66,6 +80,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
       deps: [
         EnvService
       ]
+    },
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'en-GB'
     },
     httpInterceptorProviders,
     CookieService

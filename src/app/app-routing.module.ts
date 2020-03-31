@@ -7,6 +7,7 @@ import { PreventGuestAccessGuard } from './auth/guards/prevent-guest-access.guar
 import { PreventAuthenticatedAccessGuard } from './auth/guards/prevent-authenticated-access.guard';
 import { DashboardComponent } from './account/dashboard/dashboard.component';
 import { SettingsComponent } from './account/settings/settings.component';
+import { ReportsComponent } from './account/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     canActivateChild: [PreventGuestAccessGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent  },
+      { path: 'reports', component: ReportsComponent  },
       { path: 'settings', component: SettingsComponent  },
     ]
   },
