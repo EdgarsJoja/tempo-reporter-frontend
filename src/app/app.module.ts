@@ -35,6 +35,9 @@ import {
 } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { WorklogsToTextPipe } from './account/reports/pipes/worklogs-to-text.pipe';
+import { ConfirmDialogComponent } from './general/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ import { WorklogsToTextPipe } from './account/reports/pipes/worklogs-to-text.pip
     TempoComponent,
     ReportsComponent,
     WorklogsToTextPipe,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,9 @@ import { WorklogsToTextPipe } from './account/reports/pipes/worklogs-to-text.pip
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    MatProgressBarModule
   ],
   providers: [
     EnvService,

@@ -8,7 +8,8 @@
       "user_data_update": "/api/v1/user/{token}",
       "user_tempo_data": "/api/v1/user/tempo/{token}",
       "user_tempo_data_update": "/api/v1/user/tempo/{token}",
-      "user_report": "/api/v1/user/report/{token}/{date}"
+      "user_report": "/api/v1/user/report/{token}/{date}",
+      "user_report_generate": "/api/v1/user/report/generate/{token}/{date}"
     }
   }
 }

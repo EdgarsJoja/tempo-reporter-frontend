@@ -11,15 +11,23 @@
   </mat-form-field>
 </p>
 
-<mat-form-field class="report-textarea" appearance="outline">
-  <mat-label>Your report</mat-label>
-  <label>
+<p>
+  <button mat-flat-button color="primary" (click)="handleGenerateReportButtonClick()">Generate new report</button>
+</p>
+
+<mat-progress-bar mode="indeterminate" *ngIf="reportGenerationInProgress"></mat-progress-bar>
+
+<p *ngIf="report">
+  <mat-form-field class="report-textarea" appearance="outline">
+    <mat-label>Your report</mat-label>
+    <label>
     <textarea
       matInput
       placeholder="Report..."
       cdkTextareaAutosize="true"
       cdkAutosizeMinRows="10"
       [ngModel]="report | worklogsToText"></textarea>
-  </label>
-  <mat-icon matSuffix>file_copy</mat-icon>
-</mat-form-field>
+    </label>
+    <mat-icon matSuffix>file_copy</mat-icon>
+  </mat-form-field>
+</p>
