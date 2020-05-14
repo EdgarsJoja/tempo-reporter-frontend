@@ -8,6 +8,8 @@ import { PreventAuthenticatedAccessGuard } from './auth/guards/prevent-authentic
 import { DashboardComponent } from './account/dashboard/dashboard.component';
 import { SettingsComponent } from './account/settings/settings.component';
 import { ReportsComponent } from './account/reports/reports.component';
+import { TeamsComponent } from './account/teams/teams.component';
+import { EditTeamComponent } from './account/teams/edit-team/edit-team.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,13 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent  },
       { path: 'reports', component: ReportsComponent  },
       { path: 'settings', component: SettingsComponent  },
+      {
+        path: 'teams',
+        children: [
+          { path: 'list', component: TeamsComponent },
+          { path: 'edit', component: EditTeamComponent }
+        ]
+      },
     ]
   },
   { path: '',   redirectTo: 'auth/login', pathMatch: 'full' },

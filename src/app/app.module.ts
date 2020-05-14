@@ -38,6 +38,11 @@ import { WorklogsToTextPipe } from './account/reports/pipes/worklogs-to-text.pip
 import { ConfirmDialogComponent } from './general/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { TeamsComponent } from './account/teams/teams.component';
+import { EditTeamComponent } from './account/teams/edit-team/edit-team.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -52,6 +57,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ReportsComponent,
     WorklogsToTextPipe,
     ConfirmDialogComponent,
+    TeamsComponent,
+    EditTeamComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +82,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatCardModule,
     FormsModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [
     EnvService,

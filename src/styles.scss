@@ -28,6 +28,10 @@ body {
   margin: 0 auto;
 }
 
+.fade-in {
+  animation: fade 1s;
+}
+
 // Forms
 .form {
   &-container {

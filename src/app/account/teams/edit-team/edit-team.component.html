@@ -1,0 +1,50 @@
+<h2>Edit team</h2>
+
+<div class="form-container-normal self-center-horizontally fade-in">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <mat-form-field appearance="outline">
+      <mat-label>Team name</mat-label>
+      <label>
+        <input matInput placeholder="Please enter value..." type="text" formControlName="name">
+      </label>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-chip-list #chipList aria-label="Emails selection" ngDefaultControl>
+        <mat-chip
+          *ngFor="let email of emails"
+          [selectable]="true"
+          [removable]="true"
+          (removed)="removeEmail(email)">
+          {{ email }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <label>
+
+          <input
+            placeholder="Add email..."
+            #emailsInput
+            formControlName="emails"
+            required
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="addEmail($event)"/>
+        </label>
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedEmail($event)">
+        <mat-option *ngFor="let email of filteredEmails | async" [value]="email">
+          {{ email }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Reports time</mat-label>
+      <input matInput [ngxTimepicker]="picker" formControlName="report_time" [format]="24" readonly>
+    </mat-form-field>
+    <ngx-material-timepicker #picker [minutesGap]="15"></ngx-material-timepicker>
+
+    <button class="form-submit" mat-flat-button color="primary" type="submit">Save</button>
+  </form>
+</div>

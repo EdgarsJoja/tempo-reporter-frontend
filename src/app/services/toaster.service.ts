@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-const MESSAGE_TYPE_SUCCESS = 'success';
-const MESSAGE_TYPE_ERROR = 'error';
-const MESSAGE_TYPE_INFO = 'info';
+export const MESSAGE_TYPE_SUCCESS = 'success';
+export const MESSAGE_TYPE_ERROR = 'error';
+export const MESSAGE_TYPE_INFO = 'info';
 
 @Injectable({
   providedIn: 'root'
