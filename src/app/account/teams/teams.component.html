@@ -5,9 +5,27 @@
       <mat-icon mat-list-icon>people</mat-icon>
       <h3 mat-line>{{ team.name }}</h3>
       <p mat-line>Reports at: {{ team.report_time }}</p>
-      <button mat-button>View</button>
-      <button mat-button (click)="openTeamEditView(team.id)">Edit</button>
-      <button mat-button color="warn">Delete</button>
+      <div class="actions actions-compact" fxShow.xs="true" fxHide.gt-xs="true">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Actions">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            View
+          </button>
+          <button mat-menu-item (click)="openTeamEditView(team.id)">
+            Edit
+          </button>
+          <button mat-menu-item>
+            Delete
+          </button>
+        </mat-menu>
+      </div>
+      <div class="actions actions-expanded" fxFlex="1 1 33%" fxHide.xs="true">
+        <button mat-button>View</button>
+        <button mat-button (click)="openTeamEditView(team.id)">Edit</button>
+        <button mat-button color="warn">Delete</button>
+      </div>
     </mat-list-item>
   </mat-list>
 </div>

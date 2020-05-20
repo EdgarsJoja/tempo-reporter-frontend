@@ -44,6 +44,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BackComponent } from './general/back/back.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { BackComponent } from './general/back/back.component';
     MatProgressBarModule,
     MatChipsModule,
     MatAutocompleteModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    FlexLayoutModule,
+    MatMenuModule
   ],
   providers: [
     EnvService,
