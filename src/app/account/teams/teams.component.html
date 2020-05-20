@@ -1,3 +1,17 @@
+<div class="teams container-large self-center-horizontally fade-in">
+  <mat-list role="list">
+    <div mat-subheader>Owned teams</div>
+    <mat-list-item *ngFor="let team of ownedTeams">
+      <mat-icon mat-list-icon>people</mat-icon>
+      <h3 mat-line>{{ team.name }}</h3>
+      <p mat-line>Reports at: {{ team.report_time }}</p>
+      <button mat-button>View</button>
+      <button mat-button (click)="openTeamEditView(team.id)">Edit</button>
+      <button mat-button color="warn">Delete</button>
+    </mat-list-item>
+  </mat-list>
+</div>
+
 <button mat-fab color="accent" class="add-team-fab" (click)="openCreateTeamView()">
   <mat-icon>add</mat-icon>
 </button>

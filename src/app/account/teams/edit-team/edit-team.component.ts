@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MESSAGE_TYPE_ERROR, ToasterService } from '../../../services/toaster.service';
 import { TeamDataService } from '../../../api/services/team/team-data.service';
+import { ActivatedRoute } from '@angular/router';
+import { TeamResponseData } from '../../../api/models/TeamResponseData';
 
 @Component({
   selector: 'app-edit-team',
@@ -14,6 +16,11 @@ import { TeamDataService } from '../../../api/services/team/team-data.service';
   styleUrls: ['./edit-team.component.scss'],
 })
 export class EditTeamComponent implements OnInit {
+  /**
+   * Team id for current form
+   */
+  private teamId = null;
+
   /**
    * Form
    */
@@ -51,11 +58,13 @@ export class EditTeamComponent implements OnInit {
    * @param formBuilder
    * @param toasterService
    * @param teamDataService
+   * @param route
    */
   constructor(
     private formBuilder: FormBuilder,
     private toasterService: ToasterService,
-    private teamDataService: TeamDataService
+    private teamDataService: TeamDataService,
+    private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -69,6 +78,19 @@ export class EditTeamComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.teamId = params['team_id'];
+
+      if (this.teamId) {
+        this.teamDataService.getTeamData(this.teamId).then(data => {
+          const responseData = data as TeamResponseData;
+
+          if (!responseData.error) {
+            this.form.patchValue(responseData.data.team);
+          }
+        });
+      }
+    });
   }
 
   /**
@@ -93,7 +115,8 @@ export class EditTeamComponent implements OnInit {
    * Get data, which will be sent upon team edit form save
    */
   protected prepareRequestData(data) {
-    data.emails = this.emails
+    data.emails = this.emails;
+    data.team_id = this.teamId;
 
     return data;
   }
