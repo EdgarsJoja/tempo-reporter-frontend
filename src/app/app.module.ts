@@ -43,6 +43,7 @@ import { EditTeamComponent } from './account/teams/edit-team/edit-team.component
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { BackComponent } from './general/back/back.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     ConfirmDialogComponent,
     TeamsComponent,
     EditTeamComponent,
+    BackComponent,
   ],
   imports: [
     BrowserModule,
