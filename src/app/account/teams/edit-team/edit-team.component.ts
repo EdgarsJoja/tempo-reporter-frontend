@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MESSAGE_TYPE_ERROR, ToasterService } from '../../../services/toaster.service';
 import { TeamDataService } from '../../../api/services/team/team-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TeamResponseData } from '../../../api/models/TeamResponseData';
+import { ResponseData } from '../../../auth/models/response';
 
 @Component({
   selector: 'app-edit-team',
@@ -59,12 +60,14 @@ export class EditTeamComponent implements OnInit {
    * @param toasterService
    * @param teamDataService
    * @param route
+   * @param router
    */
   constructor(
     private formBuilder: FormBuilder,
     private toasterService: ToasterService,
     private teamDataService: TeamDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       name: [''],
@@ -107,7 +110,11 @@ export class EditTeamComponent implements OnInit {
    */
   public onSubmit(data) {
     this.teamDataService.updateTeamData(this.prepareRequestData(data)).then(data => {
-      console.log(data);
+      const responseData = data as ResponseData;
+
+      if (!responseData.error) {
+        this.router.navigate(['../list'], { relativeTo: this.route }).then(data => {});
+      }
     });
   }
 

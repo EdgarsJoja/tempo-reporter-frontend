@@ -3,6 +3,7 @@ import { UrlBuilderService } from '../utils/url-builder.service';
 import { AuthService } from '../../../auth/services/auth.service';
 import { PatchService } from '../requests/patch.service';
 import { GetService } from '../requests/get.service';
+import { DeleteService } from '../requests/delete.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,14 @@ export class TeamDataService {
    * @param authService
    * @param patchRequestService
    * @param getRequestService
+   * @param deleteRequestService
    */
   constructor(
     private urlBuilderService: UrlBuilderService,
     private authService: AuthService,
     private patchRequestService: PatchService,
-    private getRequestService: GetService
+    private getRequestService: GetService,
+    private deleteRequestService: DeleteService
   ) {
   }
 
@@ -65,5 +68,20 @@ export class TeamDataService {
     });
 
     return this.getRequestService.setUrl(url).execute();
+  }
+
+  /**
+   * Delete team by ID
+   *
+   * @param teamId
+   */
+  public deleteTeam(teamId)
+  {
+    const url = this.urlBuilderService.getApiUrl('team_delete', {
+      token: this.authService.getUserToken(),
+      team_id: teamId
+    });
+
+    return this.deleteRequestService.setUrl(url).execute();
   }
 }

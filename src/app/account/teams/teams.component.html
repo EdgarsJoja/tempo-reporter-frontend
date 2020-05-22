@@ -16,15 +16,15 @@
           <button mat-menu-item (click)="openTeamEditView(team.id)">
             Edit
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="deleteTeam(team.id, team.name)">
             Delete
           </button>
         </mat-menu>
       </div>
-      <div class="actions actions-expanded" fxFlex="1 1 33%" fxHide.xs="true">
+      <div class="actions actions-expanded" fxFlex="1 1 100%" fxHide.xs="true">
         <button mat-button>View</button>
         <button mat-button (click)="openTeamEditView(team.id)">Edit</button>
-        <button mat-button color="warn">Delete</button>
+        <button mat-button color="warn" (click)="deleteTeam(team.id, team.name)">Delete</button>
       </div>
     </mat-list-item>
   </mat-list>

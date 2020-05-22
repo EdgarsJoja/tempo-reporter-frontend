@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeamDataService } from '../../api/services/team/team-data.service';
 import { Team, TeamListResponseData } from '../../api/models/TeamListResponseData';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../general/confirm-dialog/confirm-dialog.component';
+import { ResponseData } from '../../auth/models/response';
 
 @Component({
   selector: 'app-teams',
@@ -27,11 +30,13 @@ export class TeamsComponent implements OnInit {
    * @param router
    * @param activatedRoute
    * @param teamDataService
+   * @param dialog
    */
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private teamDataService: TeamDataService
+    private teamDataService: TeamDataService,
+    private dialog: MatDialog
   ) {
   }
 
@@ -65,6 +70,32 @@ export class TeamsComponent implements OnInit {
       }
     }).then(data => {
 
+    });
+  }
+
+  /**
+   * Delete team by given ID
+   *
+   * @param teamId
+   * @param teamName
+   */
+  deleteTeam(teamId, teamName) {
+    this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Are you sure?',
+        message: `Delete team: ${teamName}`
+      }
+    }).afterClosed().subscribe(confirmed => {
+      if (confirmed) {
+        this.teamDataService.deleteTeam(teamId).then(data => {
+          const responseData = data as ResponseData;
+
+          // If deleted successfully, remove from FE without reload
+          if (!responseData.error) {
+            this.teams = this.teams.filter(team => team.id !== teamId);
+          }
+        });
+      }
     });
   }
 }
