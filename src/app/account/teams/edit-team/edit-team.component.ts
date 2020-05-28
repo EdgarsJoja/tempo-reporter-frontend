@@ -71,11 +71,11 @@ export class EditTeamComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       name: [''],
-      emails: ['', [Validators.required, Validators.email]],
+      user_emails: ['', [Validators.required, Validators.email]],
       report_time: [null]
     });
 
-    this.filteredEmails = this.form.controls['emails'].valueChanges.pipe(
+    this.filteredEmails = this.form.controls['user_emails'].valueChanges.pipe(
       startWith(<string>null),
       map((email: string | null) => email ? this._filter(email) : this.allEmails.slice()));
   }
@@ -90,6 +90,7 @@ export class EditTeamComponent implements OnInit {
 
           if (!responseData.error) {
             this.form.patchValue(responseData.data.team);
+            this.emails = responseData.data.team.emails;
           }
         });
       }
@@ -100,7 +101,7 @@ export class EditTeamComponent implements OnInit {
    * Form control getter
    */
   get emailsFormControl() {
-    return this.form.get('emails');
+    return this.form.get('user_emails');
   }
 
   /**
@@ -163,7 +164,7 @@ export class EditTeamComponent implements OnInit {
         input.value = '';
       }
 
-      this.form.controls['emails'].setValue(null);
+      this.form.controls['user_emails'].setValue(null);
     }
   }
 
@@ -175,7 +176,7 @@ export class EditTeamComponent implements OnInit {
   public selectedEmail(event: MatAutocompleteSelectedEvent): void {
     this.emails.push(event.option.viewValue);
     this.emailsInput.nativeElement.value = '';
-    this.form.controls['emails'].setValue(null);
+    this.form.controls['user_emails'].setValue(null);
   }
 
   /**
