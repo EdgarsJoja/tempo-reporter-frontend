@@ -1,0 +1,24 @@
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+
+  &-header {
+    display: block;
+  }
+
+  &-content {
+    .mat-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) scale(5);
+    }
+  }
+
+  &-header,
+  &-content {
+    text-align: center;
+  }
+}

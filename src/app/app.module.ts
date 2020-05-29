@@ -46,6 +46,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BackComponent } from './general/back/back.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatAutocompleteModule,
     NgxMaterialTimepickerModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule,
+    LayoutModule
   ],
   providers: [
     EnvService,
