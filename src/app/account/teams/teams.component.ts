@@ -25,6 +25,13 @@ export class TeamsComponent implements OnInit {
   }
 
   /**
+   * Participant teams getter
+   */
+  get participateTeams() {
+    return this.teams.filter(team => !team.owned);
+  }
+
+  /**
    * Constructor
    *
    * @param router
@@ -88,6 +95,32 @@ export class TeamsComponent implements OnInit {
     }).afterClosed().subscribe(confirmed => {
       if (confirmed) {
         this.teamDataService.deleteTeam(teamId).then(data => {
+          const responseData = data as ResponseData;
+
+          // If deleted successfully, remove from FE without reload
+          if (!responseData.error) {
+            this.teams = this.teams.filter(team => team.id !== teamId);
+          }
+        });
+      }
+    });
+  }
+
+  /**
+   * Leave team
+   *
+   * @param teamId
+   * @param teamName
+   */
+  leaveTeam(teamId, teamName) {
+    this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Are you sure?',
+        message: `Leave team: ${teamName}`
+      }
+    }).afterClosed().subscribe(confirmed => {
+      if (confirmed) {
+        this.teamDataService.leaveTeam(teamId).then(data => {
           const responseData = data as ResponseData;
 
           // If deleted successfully, remove from FE without reload

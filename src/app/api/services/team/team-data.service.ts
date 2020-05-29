@@ -84,4 +84,19 @@ export class TeamDataService {
 
     return this.deleteRequestService.setUrl(url).execute();
   }
+
+  /**
+   * Leave team
+   *
+   * @param teamId
+   */
+  public leaveTeam(teamId)
+  {
+    const url = this.urlBuilderService.getApiUrl('team_leave', {
+      token: this.authService.getUserToken(),
+      team_id: teamId
+    });
+
+    return this.patchRequestService.setUrl(url).execute();
+  }
 }

@@ -13,7 +13,8 @@
       "team_data": "/api/v1/team/{token}/{team_id}",
       "team_data_update": "/api/v1/team/{token}",
       "team_list": "/api/v1/team/list/{token}",
-      "team_delete": "/api/v1/team/{token}/{team_id}"
+      "team_delete": "/api/v1/team/{token}/{team_id}",
+      "team_leave": "/api/v1/team/leave/{token}/{team_id}"
     }
   }
 }

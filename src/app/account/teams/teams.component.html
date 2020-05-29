@@ -1,15 +1,15 @@
 <div class="teams container-large self-center-horizontally fade-in">
   <mat-list role="list">
-    <div mat-subheader>Owned teams</div>
+    <div mat-subheader>Owned teams ({{ ownedTeams.length }})</div>
     <mat-list-item *ngFor="let team of ownedTeams">
       <mat-icon mat-list-icon>people</mat-icon>
       <h3 mat-line>{{ team.name }}</h3>
       <p mat-line>Reports at: {{ team.report_time }}</p>
       <div class="actions actions-compact" fxShow.xs="true" fxHide.gt-xs="true">
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Actions">
+        <button mat-icon-button [matMenuTriggerFor]="menuOwnedTeams" aria-label="Actions">
           <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #menuOwnedTeams="matMenu">
           <button mat-menu-item>
             View
           </button>
@@ -25,6 +25,32 @@
         <button mat-button>View</button>
         <button mat-button (click)="openTeamEditView(team.id)">Edit</button>
         <button mat-button color="warn" (click)="deleteTeam(team.id, team.name)">Delete</button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-list role="list">
+    <div mat-subheader>Participate teams ({{ participateTeams.length }})</div>
+    <mat-list-item *ngFor="let team of participateTeams">
+      <mat-icon mat-list-icon>people</mat-icon>
+      <h3 mat-line>{{ team.name }}</h3>
+      <p mat-line>Reports at: {{ team.report_time }}</p>
+      <div class="actions actions-compact" fxShow.xs="true" fxHide.gt-xs="true">
+        <button mat-icon-button [matMenuTriggerFor]="menuParticipateTeams" aria-label="Actions">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menuParticipateTeams="matMenu">
+          <button mat-menu-item>
+            View
+          </button>
+          <button mat-menu-item (click)="leaveTeam(team.id, team.name)">
+            Leave
+          </button>
+        </mat-menu>
+      </div>
+      <div class="actions actions-expanded" fxFlex="1 1 100%" fxHide.xs="true">
+        <button mat-button>View</button>
+        <button mat-button color="warn" (click)="leaveTeam(team.id, team.name)">Leave</button>
       </div>
     </mat-list-item>
   </mat-list>
