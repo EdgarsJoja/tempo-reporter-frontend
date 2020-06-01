@@ -53,6 +53,13 @@ export class AuthService {
   }
 
   /**
+   * Logout user
+   */
+  logout() {
+    this.cookieService.delete('user_token', '/');
+  }
+
+  /**
    * Check if current user in considered as logged in
    */
   isLoggedIn() {
