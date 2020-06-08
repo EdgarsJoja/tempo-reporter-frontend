@@ -2,6 +2,6 @@
 
 rm -rf /app-dir/node_modules
 
-cp -r /app/build-dir/node_modules/ /app/app-dir/
+npm ci
 
 exec npm run start-docker
