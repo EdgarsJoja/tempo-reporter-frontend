@@ -10,6 +10,7 @@ import { SettingsComponent } from './account/settings/settings.component';
 import { ReportsComponent } from './account/reports/reports.component';
 import { TeamsComponent } from './account/teams/teams.component';
 import { EditTeamComponent } from './account/teams/edit-team/edit-team.component';
+import {ViewTeamComponent} from "./account/teams/view-team/view-team.component";
 
 const routes: Routes = [
   {
@@ -31,7 +32,8 @@ const routes: Routes = [
         path: 'teams',
         children: [
           { path: 'list', component: TeamsComponent },
-          { path: 'edit', component: EditTeamComponent }
+          { path: 'edit', component: EditTeamComponent },
+          { path: 'view', component: ViewTeamComponent }
         ]
       },
     ]

@@ -20,4 +20,5 @@ export class Team {
   emails: string[];
   updated_at: string;
   created_at: string;
+  owner: string[];
 }

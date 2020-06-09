@@ -48,6 +48,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ViewTeamComponent } from './account/teams/view-team/view-team.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     TeamsComponent,
     EditTeamComponent,
     BackComponent,
+    ViewTeamComponent,
   ],
   imports: [
     BrowserModule,

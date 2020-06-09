@@ -131,4 +131,19 @@ export class TeamsComponent implements OnInit {
       }
     });
   }
+
+   /**
+   * Open view page for existing team
+   *
+   * @param teamId
+   */
+  viewTeamEditView(teamId) {
+    this.router.navigate(['../view'], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        team_id: teamId
+      }
+    }).then(data => {
+    });
+  }
 }
